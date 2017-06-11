@@ -28,15 +28,19 @@ class TF_Question(Question):
 
     def get_answers(self):
         return [{'correct': self.check_if_correct("True"),
-                 'content': 'True'},
+                 'content': _('True')},
                 {'correct': self.check_if_correct("False"),
-                 'content': 'False'}]
+                 'content': _('False')}]
 
     def get_answers_list(self):
-        return [(True, True), (False, False)]
+        return [(True, _('True')), (False, _('False'))]
 
     def answer_choice_to_string(self, guess):
-        return str(guess)
+        if guess == 'True':
+            s = _("True")
+        else:
+            s = _("False")
+        return str(s)
 
     class Meta:
         verbose_name = _("True/False Question")
